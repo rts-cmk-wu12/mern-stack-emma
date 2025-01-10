@@ -22,7 +22,7 @@ export default function Index() {
   
       async function fetchData() {
   
-        const response = await fetch('/api/Posts');
+        const response = await fetch('/api/posts/latest');
         const data = await response.json();
         //console.log(data)
         setPosts(data);

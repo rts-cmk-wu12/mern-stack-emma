@@ -19,13 +19,12 @@ export default function PostCard( { post } ) {
     }
 
     return (
-        <Link to={`post/${post.title}`} style={style.link}>
+        <Link to={`post/${post.id}`} style={style.link}>
             <article style={style.article}>
                 <h2>{post.title}</h2>
                 <p>By {post.author}</p>
-                <p>Tags: {post.tags[0]}, {post.tags[1]}, {post.tags[2]}</p>
+                <p>Tags: {post?.tags?.join(', ')}</p>
             </article>
-
         </Link>
     )
 }

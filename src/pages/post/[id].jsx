@@ -1,15 +1,26 @@
+import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 
-export default function Post() {
+export default function Post( ) {
+    const [data, setData] = useState({})
 
-    const params = useParams()
+    const id = useParams().id
     const BASE_URL = 'http://localhost:3000/'
-    //const character = useFetch(`${BASE_URL}character/${params.id}`)
-    console.log(params)
 
+    useEffect(() => {
+        async function fetchPost() {
+            const post = await fetch(`${BASE_URL}post/${id}`)
+            //console.log(post) 
+            setData(post)
+        }
+        
+        fetchPost()
+    }, [id])
+    
+    //console.log(data)
     return (
         <>
-        <p>Hello</p>
+        <p>Hello {data.title}</p>
         </>
     )
 }
